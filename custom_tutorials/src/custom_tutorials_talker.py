@@ -8,8 +8,9 @@ def talker():
     pub = rospy.Publisher('chatter', CustomMessage, queue_size=10)
     rospy.init_node('custom_tutorials_talker', anonymous=True)
     rate = rospy.Rate(10) # 10hz
+
+    data = CustomMessage()
     while not rospy.is_shutdown():
-        data: CustomMessage
         data.word = "hello world %s" % rospy.get_time()
         data.number = 10
         rospy.loginfo('data.word: %s' % data.word + '\n' 'data.number: %s' % str(data.number))
